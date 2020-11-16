@@ -52,7 +52,7 @@ const SignUp = () => {
         setLoggedInUser(res);
         history.replace(from);
         if (redirect) {
-            history.push('/rooms')
+            history.push('/')
 
         }
     }

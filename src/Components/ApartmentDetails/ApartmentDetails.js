@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import Header from '../HomePage/Header/Header';
 import imgbg from '../../images/Rectangle 406.png';
@@ -6,8 +6,16 @@ import img407 from '../../images/Rectangle 407.png';
 import img408 from '../../images/Rectangle 408.png';
 import img409 from '../../images/Rectangle 409.png';
 import img410 from '../../images/Rectangle 410.png';
+import { useParams } from 'react-router-dom';
 
 const ApartmentDetails = () => {
+    const {flatId} = useParams();
+    const [singleData , setSingleData] = useState({})
+    useEffect(() =>{
+        fetch(`http://localhost:8080/${flatId}`)
+        .then(res => res.json())
+        .then(data => setSingleData(data))
+    },[])
     return (
         <div>
             <Header></Header>
@@ -92,7 +100,7 @@ const ApartmentDetails = () => {
                         <Form.Group controlId="exampleForm.ControlTextarea1">
                             <Form.Control as="textarea" rows={5} placeholder="Massage" />
                         </Form.Group>
-                        <input style={{ width: "100%" }} type="submit" />
+                        <input style={{ width: "100%" }} className='btn' type="submit" />
                     </Form>
                 </div>
                  </div>

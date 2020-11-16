@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Apartments = () => {
     const [houseData, setHouseData] = useState([])
@@ -20,6 +21,7 @@ const Apartments = () => {
                 <div class="row row-cols-1 row-cols-md-3">
                     {
                         houseData.map(data => <div class="col mb-4">
+
                             <div class="card">
                                 <img src='' class="card-img-top" alt="..." />
                                 <div class="card-body">
@@ -30,11 +32,14 @@ const Apartments = () => {
                                         <p class="card-text" style={{ marginLeft: 100 }}><i class="fa fa-bath"></i> {data.bathroom}bathroom </p>
                                     </div>
                                     <div className="d-flex">
-                                        <h1 style={{ color: '#275A53', fontWeight: 'bold' }}>$12 </h1>
-                                        <button className="btn" style={{ marginLeft: 120 }}> View details</button>
+                                        <h1 style={{ color: '#275A53', fontWeight: 'bold' }}>${data.price || 12} </h1>
+                                        <Link to={"/apartmentDetails/" + data._id} style={{ textDecoration: 'none', }}>
+                                            <button className="btn" style={{ marginLeft: 120 }}> View details</button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
+
                         </div>)
                     }
 
