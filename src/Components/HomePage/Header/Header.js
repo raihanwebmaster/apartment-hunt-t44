@@ -16,13 +16,19 @@ const Header = () => {
                             <p className="nav-link" >Home <span className="sr-only">(current)</span></p>
                         </li>
                         <li className="nav-item">
-                            <p className="nav-link" >Our Portfolio</p>
+                            <p className="nav-link" >About </p>
                         </li>
                         <li className="nav-item">
-                            <p className="nav-link">Our Team</p>
+                            <p className="nav-link">Service</p>
                         </li>
                         <li className="nav-item">
-                            <p className="nav-link">Contact Us</p>
+                            <p className="nav-link">Concerns</p>
+                        </li>
+                        <li className="nav-item">
+                            <p className="nav-link">Event</p>
+                        </li>
+                        <li className="nav-item">
+                            <p className="nav-link">Contact</p>
                         </li>
                         <li className="nav-item">
                             <Link to="/login">
