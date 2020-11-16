@@ -18,18 +18,18 @@ const Apartments = () => {
                 </div>
             </div>
             <div className='container' style={{ marginTop: 150 }}>
-                <div class="row row-cols-1 row-cols-md-3">
+                <div className="row row-cols-1 row-cols-md-3">
                     {
-                        houseData.map(data => <div class="col mb-4">
+                        houseData.map(data => <div className="col mb-4">
 
-                            <div class="card">
-                                <img src='' class="card-img-top" alt="..." />
-                                <div class="card-body">
-                                    <h5 class="card-title"> {data.area} </h5>
-                                    <p class="card-text"> {data.locaiton} </p>
+                            <div className="card">
+                                <img src='' className="card-img-top" alt="..." />
+                                <div className="card-body">
+                                    <h5 className="card-title"> {data.area} </h5>
+                                    <p className="card-text"> {data.locaiton} </p>
                                     <div className="d-flex">
-                                        <p class="card-text "> <i class="fa fa-bath"></i> {data.Bedrooms}Bedrooms </p>
-                                        <p class="card-text" style={{ marginLeft: 100 }}><i class="fa fa-bath"></i> {data.bathroom}bathroom </p>
+                                        <p className="card-text "> <i className="fa fa-bath"></i> {data.Bedrooms}Bedrooms </p>
+                                        <p className="card-text" style={{ marginLeft: 100 }}><i className="fa fa-bath"></i> {data.bathroom}bathroom </p>
                                     </div>
                                     <div className="d-flex">
                                         <h1 style={{ color: '#275A53', fontWeight: 'bold' }}>${data.price || 12} </h1>

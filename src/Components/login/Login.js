@@ -10,13 +10,7 @@ import google from '../../logos/Group 573.png'
 
 const SignUp = () => {
     const [newUser, setNewUser] = useState(false);
-    const [user, setUser] = useState({
-        isSignedIn: false,
-        name: '',
-        email: '',
-        password: '',
-        photo: ''
-    });
+    const [user, setUser] = useContext(UserContext);
     initializeLoginFramework();
 
 

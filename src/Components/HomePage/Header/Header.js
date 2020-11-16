@@ -1,11 +1,32 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../../App';
 import logo from '../../../logos/Logo.png'
+import { handleSignOut } from '../../login/LoginManager';
 
 const Header = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
-    console.log(loggedInUser);
+    const [user, setUser] = useContext(UserContext);
+    const history = useHistory();
+    const location = useLocation();
+    let { from } = location.state || { from: { pathname: "/" } };
+
+    const signOut = () => {
+        handleSignOut()
+            .then(res => {
+                handleResponse(res, false);
+            })
+    }
+
+    const handleResponse = (res, redirect) => {
+        setUser(res)
+        setLoggedInUser(res);
+        history.replace(from);
+        if (redirect) {
+            history.push('/')
+
+        }
+    }
     return (
         <div className="container">
             <nav className="navbar navbar-expand-lg navbar-light ">
@@ -35,7 +56,7 @@ const Header = () => {
                         </li>
                         <li className="nav-item">
 
-                            {loggedInUser.name ? <button className="nav-link btn btn-transparent text-white" style={{ width: '134px' }} > {loggedInUser.name} </button>
+                            {loggedInUser.name || user.name  ? <button className="nav-link btn btn-transparent text-white" style={{ width: '134px' }} onClick={signOut} > {loggedInUser.name} </button>
                                 :
                                 <Link to="/login">
                                     <button className="nav-link btn btn-transparent text-white" style={{ width: '134px' }} >login </button>
