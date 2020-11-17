@@ -20,7 +20,7 @@ const Apartments = () => {
             <div className='container' style={{ marginTop: 150 }}>
                 <div className="row row-cols-1 row-cols-md-3">
                     {
-                        houseData.map(data => <div className="col mb-4">
+                        houseData.map(data => <div key={data._id} className="col mb-4">
                             <div className="card" style={{ width: '90%' }}>
                                 <img src={`data:image/png;base64,${data.image.img}`} style={{ width: '100%' }} className="card-img-top" alt="..." />
                                 <div className="card-body">

@@ -47,7 +47,7 @@ const BookingList = () => {
                     {
                         details.length ? <tbody>
                             {
-                                details.map(user => <tr className="bg-light" key={user._id}>
+                                details.map(user => <tr key={user._id} className="bg-light" key={user._id}>
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
                                     <td>{user.phone}</td>

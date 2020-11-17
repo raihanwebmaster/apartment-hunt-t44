@@ -6,8 +6,10 @@ import MyRent from '../MyRent/MyRent';
 import './Admin.css';
 import logo from '../../../logos/Logo.png';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../../App';
 
 const Admin = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     const [addhouse, setAddhouse] = useState(true);
     const [booking, setBooking] = useState(false);
     const [myrect, setmyrect] = useState(false);
@@ -39,8 +41,7 @@ const Admin = () => {
                 <div className="col-md-9 d-flex justify-content-between  align-items-center">
                     <h3 >Admin Panel</h3>
                     <div>
-                        {/* <img style={{height: "50px", borderRadius: "50%"}} src={loggedInUser.photoURL} alt=""/>
-                    <button className="navbar-login m-3">{loggedInUser.name}</button> */}
+                    <h4 className="navbar-login m-3">{loggedInUser.name}</h4>
                     </div>
                 </div>
             </div>

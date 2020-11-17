@@ -37,7 +37,9 @@ const Header = () => {
                 <div className="collapse navbar-collapse  justify-content-end" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item active">
-                            <p className="nav-link" >Home <span className="sr-only">(current)</span></p>
+                            <Link to="/Home">
+                                <p className="nav-link" >Home <span className="sr-only">(current)</span></p>
+                            </Link>
                         </li>
                         <li className="nav-item">
                             <p className="nav-link" >About </p>
