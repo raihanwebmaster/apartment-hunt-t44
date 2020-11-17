@@ -13,7 +13,7 @@ const HomePage = () => {
                 <section className="banner d-flex align-items-center text-center">
 
                     <div className="container">
-                        <h1 className='text-white'>Best Food Waiting  for your Belly</h1>
+                        <h1 className='text-white'>FIND YOUR HOUSE RENT</h1>
                         <div className="search-box col-md-6 my-5 mx-auto">
                             <input id="query" type="text" className="form-control" placeholder="Search Food Item" />
                             <button className="btn text-white search-btn btn-rounded">Find Now</button>

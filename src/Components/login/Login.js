@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Login.scss'
 import { handleGoogleSignIn, handleSignOut, handleFbSignIn, initializeLoginFramework, createUserWithEmailAndPassword, signInWithEmailAndPassword } from './LoginManager';
 import { UserContext } from '../../App';
@@ -11,17 +11,17 @@ import google from '../../logos/Group 573.png'
 const SignUp = () => {
     const [newUser, setNewUser] = useState(false);
     const [user, setUser] = useContext(UserContext);
-    initializeLoginFramework();
 
+    // const [admin, setAdmin] = useState({});
 
     const [pass, setPass] = useState();
     const [confPass, setConfPass] = useState();
 
-
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const history = useHistory();
     const location = useLocation();
-    let { from } = location.state || { from: { pathname: "/" } };
+    let { from } = location.state || { from: { pathname: '/' } };
+    initializeLoginFramework();
 
     const googleSignIn = () => {
         handleGoogleSignIn()
@@ -41,14 +41,23 @@ const SignUp = () => {
                 handleResponse(res, true)
             })
     }
+    // useEffect(() => {
+    //     fetch(`http://localhost:8080/allAdmin?email=${loggedInUser.email}`)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             setAdmin(data)
+    //         }
+    //         )
+    // }, [])
     const handleResponse = (res, redirect) => {
         setUser(res)
         setLoggedInUser(res);
         history.replace(from);
         if (redirect) {
-            history.push('/')
+            history.push('/admin')
 
         }
+
     }
     const handleBlur = (e) => {
         let isFieldValid = true;
@@ -80,6 +89,7 @@ const SignUp = () => {
             setUser(newUserInfo);
         }
     }
+
     const handleSubmit = (e) => {
 
         let pass_valid = false;
@@ -113,6 +123,7 @@ const SignUp = () => {
 
 
     }
+
     return (
         <div>
             <div className='center-alignment'>
@@ -132,8 +143,8 @@ const SignUp = () => {
                 <p>are you a new user? <span style={{ cursor: 'pointer' }} onClick={() => setNewUser(!newUser)}>sign up</span> </p>
             </div>
 
-            <div className="social-signIn d-flex align-items-center mt-3" onClick={facebookSignIn}> <img src={fb} style={{ width: '37px', height: '37px', margin: '10px' }} alt="" /> <p style={{ marginLeft: '100px',marginTop:10 }}>sign in with Facebook</p> </div>
-            <div className="social-signIn d-flex align-items-center mt-2" onClick={googleSignIn}> <img src={google} style={{ width: '37px', height: '37px', margin: '10px' }} alt="" /> <p style={{ marginLeft: '100px',marginTop:10 }}>sign in with Google</p> </div>
+            <div className="social-signIn d-flex align-items-center mt-3" onClick={facebookSignIn}> <img src={fb} style={{ width: '37px', height: '37px', margin: '10px' }} alt="" /> <p style={{ marginLeft: '100px', marginTop: 10 }}>sign in with Facebook</p> </div>
+            <div className="social-signIn d-flex align-items-center mt-2" onClick={googleSignIn}> <img src={google} style={{ width: '37px', height: '37px', margin: '10px' }} alt="" /> <p style={{ marginLeft: '100px', marginTop: 10 }}>sign in with Google</p> </div>
 
 
 

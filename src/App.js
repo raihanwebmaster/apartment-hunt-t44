@@ -9,10 +9,14 @@ import HomePage from './Components/HomePage/HomePage';
 import ApartmentDetails from './Components/ApartmentDetails/ApartmentDetails';
 import SignUp from './Components/login/Login';
 import { initializeLoginFramework, userLogin } from './Components/login/LoginManager';
+import Admin from './Components/Admin/Admin/Admin';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 
 export const UserContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
+  const [admin, setAdmin] = useState({});
+
   const [user, setUser] = useState({
     isSignedIn: false,
     name: '',
@@ -41,14 +45,32 @@ function App() {
 
   }, [])
   return (
-    <UserContext.Provider value={[loggedInUser, setLoggedInUser, user, setUser]}>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser, user, setUser, admin, setAdmin]}>
       <Router>
         <Switch>
-          <Route path="/home" component={HomePage} />
-          <Route path="/apartmentDetails/:flatId" component={ApartmentDetails} />
-          <Route path="/login" component={SignUp}></Route>
-          <Route exact path="/" component={HomePage} />
-          {/* <Route path="*" component={ } /> */}
+          <Route path="/home">
+            <HomePage></HomePage>
+          </Route>
+
+          <Route path="/apartmentDetails/:flatId" >
+            <ApartmentDetails></ApartmentDetails>
+          </Route>
+
+          <PrivateRoute path="/admin">
+            <Admin />
+          </PrivateRoute>
+
+          <Route path="/login" >
+            <SignUp></SignUp>
+          </Route>
+
+          <Route exact path="/">
+            <HomePage></HomePage>
+          </Route>
+
+          <Route path="*">
+            <h1>this page is on progress</h1>
+          </Route>
         </Switch>
       </Router>
     </UserContext.Provider>

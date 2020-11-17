@@ -15,8 +15,8 @@ const Service = () => {
                     clients' needs that always deliverst</p>
                 </div>
             </div>
-            <div className="card-deck  text-center">
-            <div className="card">
+            <div className="card-deck  text-center" >
+                <div className="card" style={{ border: 'none', background: "none" }}>
                     <div className='pt-2'>
                         <img src={img1} className="card-img-top w-25 service-img" alt="kaj kore na" />
                     </div>
@@ -26,7 +26,7 @@ const Service = () => {
                         <p className="card-text">With a robust selection of popular properties on hand, as well as leading properties from experts..</p>
                     </div>
                 </div>
-                <div className="card">
+                <div className="card" style={{ border: 'none', background: "none" }}>
                     <div className='pt-2'>
                         <img src={img3} className="card-img-top w-25 service-img" alt="..." />
                     </div>
@@ -36,7 +36,7 @@ const Service = () => {
                         <p className="card-text">Our stress-free finance department that can find financial solutions to save you money.</p>
                     </div>
                 </div>
-                <div className="card ">
+                <div className="card " style={{ border: 'none', background: "none" }} >
                     <div className='pt-2'>
                         <img src={img2} className="card-img-top service-img w-25" alt="..." />
                     </div>
@@ -46,7 +46,7 @@ const Service = () => {
                         <p className="card-text">10 new offers every day. 350 offers on site, trusted by a community of thousands of users.</p>
                     </div>
                 </div>
-              
+
             </div>
         </div>
     );

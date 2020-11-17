@@ -9,7 +9,7 @@ const Header = () => {
     const [user, setUser] = useContext(UserContext);
     const history = useHistory();
     const location = useLocation();
-    let { from } = location.state || { from: { pathname: "/" } };
+    // let { from } = location.state || { from: { pathname: "/" } };
 
     const signOut = () => {
         handleSignOut()
@@ -21,7 +21,7 @@ const Header = () => {
     const handleResponse = (res, redirect) => {
         setUser(res)
         setLoggedInUser(res);
-        history.replace(from);
+        // history.replace(from);
         if (redirect) {
             history.push('/')
 
@@ -58,7 +58,7 @@ const Header = () => {
 
                             {loggedInUser.name || user.name  ? <button className="nav-link btn btn-transparent text-white" style={{ width: '134px' }} onClick={signOut} > {loggedInUser.name} </button>
                                 :
-                                <Link to="/login">
+                                <Link to="/admin">
                                     <button className="nav-link btn btn-transparent text-white" style={{ width: '134px' }} >login </button>
                                 </Link>
                             }
