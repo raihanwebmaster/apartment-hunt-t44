@@ -49,16 +49,18 @@ const Header = () => {
                             <p className="nav-link">Concerns</p>
                         </li>
                         <li className="nav-item">
-                            <p className="nav-link">Event</p>
+                            <Link to="/AdminOrClient">
+                                <p className="nav-link">admin</p>
+                            </Link>
                         </li>
                         <li className="nav-item">
                             <p className="nav-link">Contact</p>
                         </li>
                         <li className="nav-item">
 
-                            {loggedInUser.name || user.name  ? <button className="nav-link btn btn-transparent text-white" style={{ width: '134px' }} onClick={signOut} > {loggedInUser.name} </button>
+                            {loggedInUser.name || user.name ? <button className="nav-link btn btn-transparent text-white" style={{ width: '134px' }} onClick={signOut} > {loggedInUser.name} </button>
                                 :
-                                <Link to="/admin">
+                                <Link to="/login">
                                     <button className="nav-link btn btn-transparent text-white" style={{ width: '134px' }} >login </button>
                                 </Link>
                             }

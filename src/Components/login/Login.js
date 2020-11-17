@@ -12,7 +12,6 @@ const SignUp = () => {
     const [newUser, setNewUser] = useState(false);
     const [user, setUser] = useContext(UserContext);
 
-    // const [admin, setAdmin] = useState({});
 
     const [pass, setPass] = useState();
     const [confPass, setConfPass] = useState();
@@ -41,20 +40,13 @@ const SignUp = () => {
                 handleResponse(res, true)
             })
     }
-    // useEffect(() => {
-    //     fetch(`http://localhost:8080/allAdmin?email=${loggedInUser.email}`)
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             setAdmin(data)
-    //         }
-    //         )
-    // }, [])
+   
     const handleResponse = (res, redirect) => {
         setUser(res)
         setLoggedInUser(res);
         history.replace(from);
         if (redirect) {
-            history.push('/admin')
+            // history.push('/')
 
         }
 

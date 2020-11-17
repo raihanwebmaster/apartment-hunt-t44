@@ -9,13 +9,12 @@ import HomePage from './Components/HomePage/HomePage';
 import ApartmentDetails from './Components/ApartmentDetails/ApartmentDetails';
 import SignUp from './Components/login/Login';
 import { initializeLoginFramework, userLogin } from './Components/login/LoginManager';
-import Admin from './Components/Admin/Admin/Admin';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import AdminOrClient from './Components/AdminOrClient/AdminOrClient';
 
 export const UserContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
-  const [admin, setAdmin] = useState({});
 
   const [user, setUser] = useState({
     isSignedIn: false,
@@ -45,7 +44,7 @@ function App() {
 
   }, [])
   return (
-    <UserContext.Provider value={[loggedInUser, setLoggedInUser, user, setUser, admin, setAdmin]}>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser, user, setUser]}>
       <Router>
         <Switch>
           <Route path="/home">
@@ -56,8 +55,8 @@ function App() {
             <ApartmentDetails></ApartmentDetails>
           </Route>
 
-          <PrivateRoute path="/admin">
-            <Admin />
+          <PrivateRoute path="/AdminOrClient">
+            <AdminOrClient />
           </PrivateRoute>
 
           <Route path="/login" >

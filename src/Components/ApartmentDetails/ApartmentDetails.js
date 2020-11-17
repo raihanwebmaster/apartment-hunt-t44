@@ -7,15 +7,33 @@ import img408 from '../../images/Rectangle 408.png';
 import img409 from '../../images/Rectangle 409.png';
 import img410 from '../../images/Rectangle 410.png';
 import { useParams } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 const ApartmentDetails = () => {
     const { flatId } = useParams();
     const [singleData, setSingleData] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:8080/${flatId}`)
+        fetch(`https://apartment-t44.herokuapp.com/apartmentDetails/${flatId}`)
             .then(res => res.json())
             .then(data => setSingleData(data))
     }, [])
+
+    const { register, handleSubmit, errors } = useForm();
+    const onSubmit = data => {
+        // console.log('form submitted', data)
+
+        fetch('https://apartment-t44.herokuapp.com/addBooking', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
+                    alert('your review was successfully placed')
+                }
+            })
+    };
     return (
         <div>
             <Header></Header>
@@ -84,21 +102,21 @@ const ApartmentDetails = () => {
                     </div>
                     <div className="col-md-4">
                         <div style={{ backgroundColor: "lightgrey" }} className="px-3 py-3">
-                            <Form style={{ backgroundColor: "lightgrey" }} className="my-5 md-5">
+                            <Form style={{ backgroundColor: "lightgrey" }} onSubmit={handleSubmit(onSubmit)} className="my-5 md-5">
                                 <Form.Group controlId="exampleForm.ControlInput1">
-                                    <Form.Control type="name" placeholder="Full Name" />
+                                    <Form.Control type="name" name="name" ref={register} placeholder="Full Name" />
                                 </Form.Group>
 
                                 <Form.Group controlId="exampleForm.ControlInput1">
-                                    <Form.Control type="phone" placeholder="Phone No." />
+                                    <Form.Control type="phone" name="phone" ref={register} placeholder="Phone No." />
                                 </Form.Group>
 
                                 <Form.Group controlId="exampleForm.ControlInput1">
-                                    <Form.Control type="email" placeholder="Email Address" />
+                                    <Form.Control type="email" name="email" ref={register} placeholder="Email Address" />
                                 </Form.Group>
 
                                 <Form.Group controlId="exampleForm.ControlTextarea1">
-                                    <Form.Control as="textarea" rows={5} placeholder="Massage" />
+                                    <Form.Control as="textarea" name='massage' ref={register} rows={5} placeholder="Massage" />
                                 </Form.Group>
                                 <input style={{ width: "100%" }} className='btn' type="submit" />
                             </Form>
